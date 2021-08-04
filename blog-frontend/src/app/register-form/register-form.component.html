@@ -1,10 +1,33 @@
 <button>back</button>
 <p>Register</p>
 
-<input type="text">
-<input type="text">
-<input type="text">
-<input type="text">
-<input type="text">
-<input type="text">
-<button>CREATE AN ACCOUNT</button>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <input type="text" placeholder="Email address" class="form-control" formControlName="emailAddress" required>
+
+    <div *ngIf="registerForm.controls.emailAddress.invalid && (registerForm.controls.emailAddress.dirty || registerForm.controls.emailAddress.touched)" class="alert alert-danger">
+        <div *ngIf="registerForm.controls.emailAddress.errors?.required">
+            Email address is required.   
+        </div>
+        
+    </div>
+
+    <input type="text" placeholder="Username" formControlName="username">
+    <input type="password" placeholder="Create password" formControlName="password">
+
+    <div *ngIf="registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)">
+        <div *ngIf="registerForm.controls.password.errors?.required">
+            Password is required.
+        </div>
+        <div *ngIf="registerForm.controls.password.errors?.minlength">
+            Password has to be atleast 8 characters long.
+        </div>
+    </div>
+
+    <input type="password" placeholder="Confirm password" formControlName="confirmPassword">
+    <input type="text" placeholder="Firstname" formControlName="firstName">
+    <input type="text" placeholder="Lastname" formControlName="lastName">
+    <button type="submit" [disabled]="!registerForm.valid">CREATE AN ACCOUNT</button>
+</form>
+
+<p>Form Status: {{ registerForm.controls.emailAddress.value.length }} /8</p>

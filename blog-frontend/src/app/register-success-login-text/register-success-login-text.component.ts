@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class RegisterSuccessLoginTextComponent implements OnInit {
 
   name = "Trevor";
-
   constructor() { }
 
   ngOnInit(): void {
