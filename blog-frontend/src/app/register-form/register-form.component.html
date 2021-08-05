@@ -25,9 +25,16 @@
     </div>
 
     <input type="password" placeholder="Confirm password" formControlName="confirmPassword">
+    <div *ngIf="registerForm.errors?.noMatch && (registerForm.controls.confirmPassword.touched || registerForm.controls.confirmPassword.dirty)">
+            Confirmation password doesn't match.
+    </div>
+
     <input type="text" placeholder="Firstname" formControlName="firstName">
     <input type="text" placeholder="Lastname" formControlName="lastName">
     <button type="submit" [disabled]="!registerForm.valid">CREATE AN ACCOUNT</button>
 </form>
 
 <p>Form Status: {{ registerForm.controls.emailAddress.value.length }} /8</p>
+<button (click) = "getData()">Post test</button>
+
+<p>{{ data }}</p>

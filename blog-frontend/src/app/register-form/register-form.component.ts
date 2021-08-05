@@ -3,8 +3,13 @@ import {
   FormGroup,
   FormControl,
   FormBuilder,
-  Validators
+  Validators,
+  ValidatorFn,
+  AbstractControl,
+  ValidationErrors
  } from '@angular/forms';
+
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-register-form',
@@ -23,15 +28,44 @@ export class RegisterFormComponent implements OnInit {
     confirmPassword : ["", Validators.required],
     firstName : ["", Validators.required],
     lastName : ["", Validators.required]
-  });
+  }, { validators: passwordConfirmationValidator});
 
-  constructor(private fb: FormBuilder) { }
+  data = ""
+
+  constructor(private fb: FormBuilder, private http: HttpClient ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(){
+
     console.warn(this.registerForm.value);
+
+    const formDirectory = this.registerForm.controls
+    const body =  { username: formDirectory.username.value,
+                    email: formDirectory.emailAddress.value,
+                    pass: formDirectory.password.value,
+                    name: formDirectory.firstName.value,
+                    surname: formDirectory.lastName.value
+                    }
+
+    this.http.post<any>("http://localhost:8000/users", body)
+      .subscribe(data => {
+        this.data = JSON.stringify(data);
+      })
+  }
+
+  getData(){
+    
   }
 
 }
+
+export const passwordConfirmationValidator: ValidatorFn = (control: AbstractControl):
+
+ValidationErrors | null => {
+  const password = control.get('password');
+  const confirmation = control.get('confirmPassword');
+
+  return password && confirmation && password.value != confirmation.value ? { noMatch: true } : null;
+};
