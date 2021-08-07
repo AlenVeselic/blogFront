@@ -12,6 +12,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { NoEmailPopupComponent } from './no-email-popup/no-email-popup.component';
 import { UsernameEmailExistsRegPopupComponent } from './username-email-exists-reg-popup/username-email-exists-reg-popup.component';
 import { RegisterSuccessLoginTextComponent } from './register-success-login-text/register-success-login-text.component';
+import { OzlogoComponent } from './ozlogo/ozlogo.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { RegisterSuccessLoginTextComponent } from './register-success-login-text
     RegisterFormComponent,
     NoEmailPopupComponent,
     UsernameEmailExistsRegPopupComponent,
-    RegisterSuccessLoginTextComponent
+    RegisterSuccessLoginTextComponent,
+    OzlogoComponent
   ],
   imports: [
     BrowserModule,
