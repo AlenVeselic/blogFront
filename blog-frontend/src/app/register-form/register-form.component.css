@@ -12,6 +12,39 @@ form{
 
     flex-flow: wrap;
 
-    max-width: 60%;
+    
 }
 
+.inputRowDiv{
+    display:flex;
+    
+    width:100%;
+}
+
+.inputRowDiv input{
+    flex-grow: 1;
+}
+
+.errorRow{
+    display: flex;
+    width: 100%;
+}
+.errorRow div{
+    width:50%;
+}
+.errorMessage{
+    width: 100%;
+    
+
+}
+.errorMessage div{
+    width: 100%;
+    
+}
+
+.submitButton{
+    display: flex;
+    flex-grow: 1;
+    
+    justify-content: center;
+}

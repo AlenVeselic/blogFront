@@ -1,6 +1,19 @@
 <h2>Login</h2>
+<p>{{ data }}</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <input type="text" placeholder="Username or Email Address" formControlName="usernameEmail">
+    <div *ngIf="loginForm.controls.usernameEmail.invalid && (loginForm.controls.usernameEmail.dirty || loginForm.controls.usernameEmail.touched)">
+        <div *ngIf="loginForm.controls.usernameEmail.errors?.required">
+            Username or email required.
+        </div>
+    </div>
+    <input type="text" placeholder="Password" formControlName="password">
+    <div *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
+        <div *ngIf="loginForm.controls.password.errors?.required">
+            Password required.
+        </div>
+    </div>
+    <button type="submit">LOGIN</button>
+</form>
 
-<input type="text" placeholder="Username or Email Address">
-<input type="text" placeholder="Password">
-<button>LOGIN</button>
 <button>CREATE AN ACCOUNT</button>

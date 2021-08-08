@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { 
-  FormGroup,
-  FormControl,
   FormBuilder,
   Validators,
   ValidatorFn,
@@ -19,7 +17,8 @@ import { HttpClient } from '@angular/common/http';
 export class RegisterFormComponent implements OnInit {
 
   registerForm = this.fb.group({
-    emailAddress : ["", Validators.required],
+    emailAddress : ["", [Validators.required,
+                        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     username : ["", Validators.required],
     password : ["", [ 
       Validators.required, Validators.minLength(8)
@@ -39,8 +38,6 @@ export class RegisterFormComponent implements OnInit {
 
   onSubmit(){
 
-    console.warn(this.registerForm.value);
-
     const formDirectory = this.registerForm.controls
     const body =  { username: formDirectory.username.value,
                     email: formDirectory.emailAddress.value,
@@ -55,9 +52,6 @@ export class RegisterFormComponent implements OnInit {
       })
   }
 
-  getData(){
-    
-  }
 
 }
 
