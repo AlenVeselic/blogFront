@@ -7,7 +7,7 @@
             Username or email required.
         </div>
     </div>
-    <input type="text" placeholder="Password" formControlName="password">
+    <input type="password" placeholder="Password" formControlName="password">
     <div *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
         <div *ngIf="loginForm.controls.password.errors?.required">
             Password required.

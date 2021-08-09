@@ -36,10 +36,17 @@ export class LoginFormComponent implements OnInit {
       pass: formDirectory.password.value
     }
 
-    this.http.post<any>("http://localhost:8000/login", body)
+   const options ={
+     withCredentials: true
+   }
+
+    this.http.post<any>("http://localhost:8000/login", body, options)
       .subscribe(data => {
-        this.data = JSON.stringify(data);
-        console.warn(data);
+        this.data = JSON.stringify(data.user);
+        this.data += data.token;
+       
+        
+        console.warn();
       })
 
   }
