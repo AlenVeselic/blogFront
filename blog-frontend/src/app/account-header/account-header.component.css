@@ -1,0 +1,8 @@
+:host{
+    display: flex;
+}
+
+button{
+    align-self: flex-start;
+}
+

@@ -8,6 +8,8 @@ import {
 } from '@angular/forms';
 
 import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -24,7 +26,10 @@ export class LoginFormComponent implements OnInit {
 
   data = ""
 
-  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  constructor(private fb: FormBuilder,
+              private http: HttpClient,
+              private cookieService: CookieService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -42,11 +47,18 @@ export class LoginFormComponent implements OnInit {
 
     this.http.post<any>("http://localhost:8000/login", body, options)
       .subscribe(data => {
-        this.data = JSON.stringify(data.user);
-        this.data += data.token;
-       
-        
-        console.warn();
+          if(data.message === "Success"){
+            this.data = JSON.stringify(data.user);
+            this.data += JSON.stringify(data.token);
+            const token = data.token;
+
+            this.cookieService.set("AuthenticationToken", token.id, {expires: token.maxAge});
+            this.router.navigate(['/account']);
+            
+          }else{
+            this.data = data.message;
+          }
+
       })
 
   }

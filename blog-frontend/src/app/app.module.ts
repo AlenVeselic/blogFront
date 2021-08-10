@@ -13,6 +13,10 @@ import { NoEmailPopupComponent } from './no-email-popup/no-email-popup.component
 import { UsernameEmailExistsRegPopupComponent } from './username-email-exists-reg-popup/username-email-exists-reg-popup.component';
 import { RegisterSuccessLoginTextComponent } from './register-success-login-text/register-success-login-text.component';
 import { OzlogoComponent } from './ozlogo/ozlogo.component';
+import { AccountHeaderComponent } from './account-header/account-header.component';
+import { AccountProfileComponent } from './account-profile/account-profile.component';
+import { AccountContentComponent } from './account-content/account-content.component';
+import { AccountMainComponent } from './account-main/account-main.component';
 
 
 @NgModule({
@@ -23,7 +27,11 @@ import { OzlogoComponent } from './ozlogo/ozlogo.component';
     NoEmailPopupComponent,
     UsernameEmailExistsRegPopupComponent,
     RegisterSuccessLoginTextComponent,
-    OzlogoComponent
+    OzlogoComponent,
+    AccountHeaderComponent,
+    AccountProfileComponent,
+    AccountContentComponent,
+    AccountMainComponent
   ],
   imports: [
     BrowserModule,

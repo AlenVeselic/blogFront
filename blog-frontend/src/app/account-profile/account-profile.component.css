@@ -1,0 +1,11 @@
+:host{
+    display: flex;
+}
+
+.stats{
+    display:flex;
+}
+
+button{
+    align-self: flex-start;
+}
