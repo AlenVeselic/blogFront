@@ -1,0 +1,10 @@
+<form [formGroup] = "postForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="title" >
+    <hr>
+    <textarea formControlName="content">
+        
+    </textarea>
+
+    <button mat-button [mat-dialog-close] = "true">Cancel</button>
+    <button type="submit">Save & Share</button>
+</form>

@@ -1,0 +1,11 @@
+
+ form{
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    width:50vw;
+    height: 60vh;
+ }
+ form textarea{
+     height: 50%;
+ }

@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
+
+
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { NoEmailPopupComponent } from './no-email-popup/no-email-popup.component';
@@ -17,6 +19,10 @@ import { AccountHeaderComponent } from './account-header/account-header.componen
 import { AccountProfileComponent } from './account-profile/account-profile.component';
 import { AccountContentComponent } from './account-content/account-content.component';
 import { AccountMainComponent } from './account-main/account-main.component';
+import { PostPopupComponent } from './post-popup/post-popup.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -31,13 +37,16 @@ import { AccountMainComponent } from './account-main/account-main.component';
     AccountHeaderComponent,
     AccountProfileComponent,
     AccountContentComponent,
-    AccountMainComponent
+    AccountMainComponent,
+    PostPopupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
